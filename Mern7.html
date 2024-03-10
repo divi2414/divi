@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Functions in JavaScript</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const arrayFunctions = [
+        "concat()",
+        "filter()",
+        "forEach()",
+        "indexOf()",
+        "join()",
+        "map()",
+        "pop()",
+        "push()",
+        "reduce()",
+        "reverse()",
+        "shift()",
+        "slice()",
+        "sort()",
+        "splice()",
+        "unshift()"
+      ];
+
+      // Display the list of array functions
+      const listContainer = document.getElementById("arrayFunctionsList");
+      arrayFunctions.forEach(function (func) {
+        const listItem = document.createElement("li");
+        listItem.textContent = func;
+        listContainer.appendChild(listItem);
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Array Functions in JavaScript</h1>
+  <p>List of common array functions:</p>
+  <ul id="arrayFunctionsList"></ul>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Fetch Employee Details</title>
+  <script>
+    // Sample employee details
+    const empDetails = [
+      { 'eno': 1001001, 'enm': 'amit', 'esal': 10000 },
+      { 'eno': 1001002, 'enm': 'pankaj', 'esal': 20000 },
+      { 'eno': 1001003, 'enm': 'ravi', 'esal': 30000 }
+    ];
+
+    // Function to perform login and fetch employee details
+    function loginAndFetchDetails() {
+      // Get input values
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Check if username and password match
+      if (username === "user" && password === "password") {
+        // Dummy logic to fetch employee details based on login success
+        const employeeDetailsContainer = document.getElementById("employeeDetails");
+        employeeDetailsContainer.innerHTML = "<h2>Employee Details:</h2>";
+
+        for (const emp of empDetails) {
+          const empInfo = document.createElement("p");
+          empInfo.textContent = `Employee ID: ${emp.eno}, Name: ${emp.enm}, Salary: $${emp.esal}`;
+          employeeDetailsContainer.appendChild(empInfo);
+        }
+      } else {
+        alert("Invalid login credentials. Please try again.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Login and Fetch Employee Details</h1>
+  <form>
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+
+    <button type="button" onclick="loginAndFetchDetails()">Login</button>
+  </form>
+
+  <div id="employeeDetails"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Interest Calculator</title>
+  <script>
+    function calculateSimpleInterest(principal, rate, time) {
+      return (principal * rate * time) / 100;
+    }
+    function calculateAndDisplayInterest() {
+      const principal = parseFloat(document.getElementById("principal").value) || 0;
+      const rate = parseFloat(document.getElementById("rate").value) || 0;
+      const time = parseFloat(document.getElementById("time").value) || 0;
+
+      const simpleInterest = calculateSimpleInterest(principal, rate, time);
+
+
+      document.getElementById("result").innerHTML = `Simple Interest: $${simpleInterest.toFixed(2)}`;
+    }
+  </script>
+</head>
+<body>
+  <h1>Simple Interest Calculator</h1>
+
+  <form>
+    <label for="principal">Principal amount:</label>
+    <input type="number" id="principal" placeholder="Enter principal amount" required>
+
+    <label for="rate">Rate of interest:</label>
+    <input type="number" id="rate" placeholder="Enter rate of interest" required>
+
+    <label for="time">Time (in years):</label>
+    <input type="number" id="time" placeholder="Enter time in years" required>
+
+    <button type="button" onclick="calculateAndDisplayInterest()">Calculate Interest</button>
+  </form>
+
+  <p id="result"></p>
+</body>
+</html>

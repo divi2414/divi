@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    function multiplyMatrices() {
+      const matrix1Rows = 2;
+      const matrix1Cols = document.getElementById("matrix1Input").children.length / 2;
+      const matrix2Rows = matrix1Cols;
+      const matrix2Cols = 2;
+      const matrix1 = [];
+      for (let i = 0; i < matrix1Rows; i++) {
+        matrix1[i] = [];
+        for (let j = 0; j < matrix1Cols; j++) {
+          const element = document.getElementById("matrix1Input").children[i * matrix1Cols + j].value;
+          matrix1[i][j] = parseFloat(element) || 0;
+        }
+      }
+      const matrix2 = [];
+      for (let i = 0; i < matrix2Rows; i++) {
+        matrix2[i] = [];
+        for (let j = 0; j < matrix2Cols; j++) {
+          const element = document.getElementById("matrix2Input").children[i * matrix2Cols + j].value;
+          matrix2[i][j] = parseFloat(element) || 0;
+        }
+      }
+      if (matrix1Cols !== matrix2Rows) {
+        alert("Error: Number of columns in matrix 1 must equal the number of rows in matrix 2 for multiplication.");
+        return;
+      }
+      const resultMatrix = [];
+      for (let i = 0; i < matrix1Rows; i++) {
+        resultMatrix[i] = [];
+        for (let j = 0; j < matrix2Cols; j++) {
+          resultMatrix[i][j] = 0;
+          for (let k = 0; k < matrix1Cols; k++) {
+            resultMatrix[i][j] += matrix1[i][k] * matrix2[k][j];
+          }
+        }
+      }
+      let resultText = "Resulting Matrix: <br>";
+      for (let i = 0; i < matrix1Rows; i++) {
+        resultText += "[";
+        for (let j = 0; j < matrix2Cols; j++) {
+          resultText += resultMatrix[i][j] + (j === matrix2Cols - 1 ? "" : ", ");
+        }
+        resultText += "]<br>";
+      }
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</head>
+<body>
+  <h1>Matrix Multiplication</h1>
+  <p>Enter elements of the first matrix (rows x columns):</p>
+  <div id="matrix1Input">
+    <input type="text" placeholder="Enter element">
+    <input type="text" placeholder="Enter element">
+  </div>
+  <p>Enter elements of the second matrix (rows x columns):</p>
+  <div id="matrix2Input">
+    <input type="text" placeholder="Enter element">
+    <input type="text" placeholder="Enter element">
+  </div>
+  <button onclick="multiplyMatrices()">Multiply</button>
+  <p id="result"></p>
+</body>
+</html>
